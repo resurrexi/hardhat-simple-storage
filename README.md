@@ -1,13 +1,27 @@
-# Sample Hardhat Project
+# Hardhat Simple Storage Contract
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+Follows the Blockchain FCC course on YT.
 
-Try running some of the following tasks:
+## Instructions
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
+1. Create and configure a `.env` file:
+
+```sh
+GOERLI_RPC_URL=https://rpc-link-to-goerli-network
+PRIVATE_KEY=privateKeyToWalletAccount
+ETHERSCAN_API_KEY=apiKeyForEtherscan
+REPORT_GAS=1 # or 0
+COINMARKETCAP_API_KEY=apiKeyForCoinMarketCap
+```
+
+2. Deploy and run contract on default hardhat network:
+
+```sh
 npx hardhat run scripts/deploy.js
+```
+
+3. Optionally, deploy and run contract on a different network:
+
+```sh
+npx hardhat run scripts/deploy.js --network goerli
 ```
