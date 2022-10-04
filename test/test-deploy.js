@@ -22,4 +22,15 @@ describe("SimpleStorage", function () {
     const currentValue = await simpleStorage.retrieve();
     assert.equal(currentValue.toString(), "7");
   });
+
+  it("Should update when adding a person", async function () {
+    const transactionResponse = await simpleStorage.addPerson("Lee", "9");
+    await transactionResponse.wait(1);
+
+    const person = await simpleStorage.people(0);
+    assert.equal(person.favoriteNumber, 9);
+    assert.equal(person.name, "Lee");
+    const favoriteNumber = await simpleStorage.nameToFavoriteNumber("Lee");
+    assert.equal(favoriteNumber, 9);
+  });
 });
