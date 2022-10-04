@@ -1,10 +1,8 @@
-const hre = require("hardhat");
-require("dotenv").config();
+import { ethers, run, network } from "hardhat";
+import "dotenv/config";
 
 async function main() {
-  const SimpleStorageFactory = await hre.ethers.getContractFactory(
-    "SimpleStorage"
-  );
+  const SimpleStorageFactory = await ethers.getContractFactory("SimpleStorage");
   console.log("Deploying contract...");
   const simpleStorage = await SimpleStorageFactory.deploy();
   await simpleStorage.deployed();
@@ -31,7 +29,7 @@ async function main() {
   console.log(`Updated value is: ${updatedValue}`);
 }
 
-async function verify(contractAddress, args) {
+async function verify(contractAddress: string, args: any[]) {
   // only run this if contract is deployed on a public network
 
   // RESOURCES
@@ -39,11 +37,11 @@ async function verify(contractAddress, args) {
   // https://hardhat.org/hardhat-runner/plugins/nomiclabs-hardhat-etherscan#using-programmatically
   console.log("Verifying contract...");
   try {
-    await hre.run("verify:verify", {
+    await run("verify:verify", {
       address: contractAddress,
       constructorArguments: args,
     });
-  } catch (err) {
+  } catch (err: any) {
     if (err.message.toLowerCase().includes("already verified")) {
       console.log("Already verified");
     } else {

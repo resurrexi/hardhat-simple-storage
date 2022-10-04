@@ -1,14 +1,15 @@
-require("@nomicfoundation/hardhat-toolbox");
-require("@nomiclabs/hardhat-etherscan");
-require("hardhat-gas-reporter");
-require("solidity-coverage");
-require("./tasks/block-number");
-require("dotenv").config();
+import "@nomicfoundation/hardhat-toolbox";
+import "@nomiclabs/hardhat-etherscan";
+import "@typechain/hardhat";
+import "hardhat-gas-reporter";
+import "solidity-coverage";
+import "./tasks/block-number";
+import "dotenv/config";
 
 const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL || "https://eth-goerli";
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "accountKey";
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "ethersKey";
-const REPORT_GAS = parseInt(process.env.REPORT_GAS) ? true : false;
+const REPORT_GAS = process.env.REPORT_GAS;
 const COINMARKETCAP_API_KEY =
   process.env.COINMARKETCAP_API_KEY || "coinMarketCapKey";
 
